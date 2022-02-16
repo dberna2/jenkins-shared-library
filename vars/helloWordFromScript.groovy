@@ -6,14 +6,14 @@ def call(Map config = [:]) {
     sh "chmod a+x ./${config.name}"
 }
 
-def loadResource(String env, String  fileName) {
+def loadResource(String env, String fileName) {
     if(env == 'linux') {
         echo "Hello Tux!"
-        def scriptcontents = libraryResource "com/dberna2/scripts/linux/${config.name}.sh"
+        def scriptcontents = libraryResource "com/dberna2/scripts/linux/${fileName}.sh"
         return scriptcontents
     }else {
         echo "Hello Windows!"
-        def scriptcontents = libraryResource "com/dberna2/scripts/windows/${config.name}.bat"
+        def scriptcontents = libraryResource "com/dberna2/scripts/windows/${fileName}.bat"
         return scriptcontents
     }
 }
