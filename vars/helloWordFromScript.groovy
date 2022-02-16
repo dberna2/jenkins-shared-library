@@ -5,6 +5,6 @@ def call(Map config = [:]) {
     if(config.env == "linux") {
         echo "Hello Tux!"
     }else {
-        echo "Hello Windown!"
+        echo "Hello Windows!"
     }
 }
