@@ -1,5 +1,5 @@
 def call(Map config=[:]) {
-    def rawBody = libraryResource 'com/dberna2/api/createPerson.json'
+    def rawBody = libraryResource 'com/dberna2/api/person/createPerson.json'
     
     def binding = [
         name: "${config.name}",
