@@ -10,5 +10,5 @@ def call(Map config=[:]) {
 
     def render = renderTemplate(rawBody, binding)
     
-    sh('curl -D- -u $JIRA_CREDENTIALS -X POST --data "'+ render +'" -H "Content-Type: application/json" $JIRA_URL/public/v2/users')
+    sh('curl -D- -u $JIRA_CREDENTIALS -X POST --data "'+ render +'" -H "Content-Type: application/json" $PERSON_API_URL/public/v2/users')
 }
