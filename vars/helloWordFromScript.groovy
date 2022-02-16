@@ -9,9 +9,11 @@ def call(Map config = [:]) {
 def loadResource(String env, String  fileName) {
     if(env == 'linux') {
         echo "Hello Tux!"
-        return libraryResource "com/dberna2/scripts/linux/${config.name}.sh"
+        def scriptcontents = libraryResource "com/dberna2/scripts/linux/${config.name}.sh"
+        return scriptcontents
     }else {
         echo "Hello Windows!"
-        return libraryResource "com/dberna2/scripts/windows/${config.name}.bat"
+        def scriptcontents = libraryResource "com/dberna2/scripts/windows/${config.name}.bat"
+        return scriptcontents
     }
 }
