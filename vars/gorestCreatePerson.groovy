@@ -11,7 +11,7 @@ def call(Map config=[:]) {
                 status: "${config.status}"
             ]
             echo "binding"
-            echo binding
+            echo binding.toString()
             echo "binding end"
             def render = renderTemplate(rawBody, binding)
         
