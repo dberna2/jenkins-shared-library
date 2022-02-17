@@ -16,7 +16,7 @@ def call(Map config=[:]) {
                 returnStdout: true
             ).trim()
             //def json = new groovy.json.JsonSlurperClassic().parseText(response)
-            def list = new net.sf.json.groovy.JsonSlurper().parseText( restResponse )
+            def list = new net.sf.json.groovy.JsonSlurper().parseText( response )
 
             list.each { println it }
 
