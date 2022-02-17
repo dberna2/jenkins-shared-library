@@ -14,7 +14,6 @@ def call(Map config=[:]) {
             def render = renderTemplate(rawBody, binding)
         
             sh '''
-                set +x
                 curl -D- -X POST --data "${render}" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" $PERSON_API_URL/public/v2/users
             '''
         }
