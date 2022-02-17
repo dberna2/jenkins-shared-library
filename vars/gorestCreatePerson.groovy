@@ -12,10 +12,9 @@ def call(Map config=[:]) {
         withCredentials([string(credentialsId: 'PERSON_API_ACCESS_TOKEN', variable: 'API_TOKEN')]) {
             def render = renderTemplate(rawBody, binding)
             def response = sh(
-                script: "curl -D- -X POST --data '${render}' -H \"Content-Type: application/json\" -H \"Authorization: Bearer $API_TOKEN\" $PERSON_API_URL/public/v2/users", 
+                script: "curl -X POST --data '${render}' -H \"Content-Type: application/json\" -H \"Authorization: Bearer $API_TOKEN\" $PERSON_API_URL/public/v2/users", 
                 returnStdout: true
             ).trim()
-            echo response["id"]  + "Salida"
             echo response  + "Salida"
         }
     }
