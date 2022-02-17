@@ -1,3 +1,5 @@
+import net.sf.json.groovy.JsonSlurper
+
 def call(Map config=[:]) {
     def rawBody = libraryResource 'com/dberna2/api/person/createPerson.json'
 
@@ -11,19 +13,16 @@ def call(Map config=[:]) {
     node {
         withCredentials([string(credentialsId: 'PERSON_API_ACCESS_TOKEN', variable: 'API_TOKEN')]) {
             def render = renderTemplate(rawBody, binding)
+            echo render.class.name
             def response = sh(
                 script: "curl -X POST --data '${render}' -H \"Content-Type: application/json\" -H \"Authorization: Bearer $API_TOKEN\" $PERSON_API_URL/public/v2/users", 
                 returnStdout: true
             ).trim()
-            
-            def list = new net.sf.json.groovy.JsonSlurper().parseText( response )
-
+            echo response.class.name
+            def list = new JsonSlurper().parseText( response )
             list.each { 
-                println it 
                 echo  it.get("message") + 22222
             }
-
-            echo response  + "Salida"
         }
     }
 }
