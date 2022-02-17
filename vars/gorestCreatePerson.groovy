@@ -15,7 +15,10 @@ def call(Map config=[:]) {
                 script: "curl -X POST --data '${render}' -H \"Content-Type: application/json\" -H \"Authorization: Bearer $API_TOKEN\" $PERSON_API_URL/public/v2/users", 
                 returnStdout: true
             ).trim()
-            def json = new groovy.json.JsonSlurperClassic().parseText(response)
+            //def json = new groovy.json.JsonSlurperClassic().parseText(response)
+            def list = new JsonSlurper().parseText( restResponse )
+
+            list.each { println it }
 
             echo json + "Salida1"
             echo response  + "Salida"
