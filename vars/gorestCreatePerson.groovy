@@ -20,8 +20,7 @@ def call(Map config=[:]) {
 
             list.each { 
                 println it 
-                def json = new groovy.json.JsonSlurperClassic().parseText(it)
-                echo json["message"] + "44444"
+                echo  it.get("message") + 22222
             }
 
             echo response  + "Salida"
