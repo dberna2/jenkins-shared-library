@@ -13,7 +13,7 @@ def call(Map config=[:]) {
             String url = "$PERSON_API_URL/public/v2/users"
             String authorization = "Authorization: Bearer $API_TOKEN"
             def render = renderTemplate(rawBody, binding)
-            def response = sh(script: "curl -D- -X POST --data '${render}' -H "\"Content-Type: application/json\"" -H $authorization $url", returnStdout: true).trim()
+            def response = sh(script: "curl -D- -X POST --data '${render}' -H "Content-Type: application/json" -H $authorization $url", returnStdout: true).trim()
             echo response  + "Salida"
         }
     }
