@@ -1,6 +1,6 @@
 def call(Map config=[:]) {
     def rawBody = libraryResource 'com/dberna2/api/person/createPerson.json'
-
+    echo rawBody
     node {
         withCredentials([string(credentialsId: 'PERSON_API_ACCESS_TOKEN', variable: 'TOKEN')]) {
 
@@ -10,6 +10,7 @@ def call(Map config=[:]) {
                 email: "${config.email}",
                 status: "${config.status}"
             ]
+            echo binding
 
             def render = renderTemplate(rawBody, binding)
         
