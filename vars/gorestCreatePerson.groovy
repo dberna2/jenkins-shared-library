@@ -19,9 +19,9 @@ def call(Map config=[:]) {
                 returnStdout: true
             ).trim()
 
-            def list = new JsonSlurper().parseText(response)
-            echo list.class.name + "nombre"
-            def element = list.first()
+            def jsonArray = new JsonSlurper().parseText(response)
+            
+            def element = jsonArray.getJSONObject(0)
             echo  element.get("message") + 22222
             
         }
