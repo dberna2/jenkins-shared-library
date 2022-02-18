@@ -20,6 +20,7 @@ def call(Map config=[:]) {
             ).trim()
 
             def list = new JsonSlurper().parseText(response)
+            echo list.class.name + "nombre"
             def element = list.first()
             echo  element.get("message") + 22222
             
